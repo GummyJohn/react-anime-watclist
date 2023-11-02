@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: black;
+}
+
+.showcase{
+  background-image: url('./img/girl-7628308_1920.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 50vh;
+}
+
+.navbar{
+  background-image: url('./img/girl-7628308_1920.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position:top ;
+}
+
+.card_height{
+  height: 360px;
+}
+
+.max{
+  max-width: 1750px;
+}
+
+.point{
+  left: -11.6px;
+}
+
+.top_point{
+  top: -11.5px
+}
