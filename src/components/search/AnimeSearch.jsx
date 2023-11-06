@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faSpinner, faXmark} from '@fortawesome/free-solid-svg-icons'
 
 
-const AnimeSearch = () => {
+const AnimeSearch = ({addList, already}) => {
   const [query, setQuery] = useState('');
   const [apiQuery, setApiQuery] = useState('');
 
@@ -22,15 +22,15 @@ const AnimeSearch = () => {
 
   return (
     <div className="p-5 max m-auto">
-      <div className='text-orange-500 p-4 my-4 text-center'>
+      <div className='text-orange-500 p-4 my-4 text-center mt-36'>
         <label htmlFor="animeSearch" className='text-5xl'> 
           Search for Animes :
         </label>
 
-        <div className='border bg-white w-3/4 flex justify-between items-center mt-3 m-auto px-4'>
+        <div className='border bg-white w-3/4 flex justify-between items-center mt-5 m-auto px-4'>
           <FontAwesomeIcon icon={faMagnifyingGlass}/>
           <input 
-            className='p-2 w-full mx-3 focus:outline-none'
+            className='p-2 w-full mx-3 focus:outline-none text-black'
             type="text" 
             id="animeSearch"
             autoComplete = 'off'
@@ -65,27 +65,34 @@ const AnimeSearch = () => {
           </div>
         }
 
-        {loading && (
-          <div className="w-full flex items-center justify-center ">
-              <FontAwesomeIcon icon={faSpinner} spin 
-                className="text-9xl"
-              />
-          </div>
-        )}
-        {data && (
-          <div className="grid grid-cols-5 gap-4 my-6">
-            {data.map((anime) => {
-              return (
-                <Card
-                  key={anime.mal_id}
-                  id={anime.mal_id}
-                  type='anime'
-                  image={anime.images.jpg.image_url}
+        {loading 
+            ? 
+          (
+            <div className="w-full flex items-center justify-center mt-20 text-white">
+                <FontAwesomeIcon icon={faSpinner} spin 
+                  className="text-9xl"
                 />
-              )
-            })}
-          </div>
-        )}
+            </div>
+          )
+            :
+          (
+            <div className="grid grid-cols-5 gap-4 my-6">
+              {data.map((anime) => {
+                return (
+                  <Card
+                    key={anime.mal_id}
+                    id={anime.mal_id}
+                    type='anime'
+                    image={anime.images.jpg.image_url}
+                    onClick={() => addList(anime, 'anime')}
+                    already={already}
+                  />
+                )
+              })}
+            </div>
+
+          )
+        }
       </div>
     </div>
   )

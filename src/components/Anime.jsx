@@ -6,20 +6,19 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner} from '@fortawesome/free-solid-svg-icons'
 import Recommendations from "./Recommendations";
 
-const Anime = () => {
+const Anime = ({already, addList}) => {
   const { id } = useParams();
 
   const {data: anime, loading, error, errorMsg} = fetchData(`https://api.jikan.moe/v4/anime/${id}`)
-  const {data} = anime;
 
-  console.log(data)
+  const {data} = anime;
 
   return (
     <div 
       className="border-2 rounded-2xl bg-white max m-auto py-1 px-2"
     >
       {loading && (
-        <div className="w-full flex items-center justify-center mt-5">
+        <div className="w-full flex items-center justify-center mt-36">
           <FontAwesomeIcon icon={faSpinner} spin 
             className="text-9xl"
           />
@@ -35,14 +34,24 @@ const Anime = () => {
 
       {data && (
         <>
-          <div className="flex justify-between items-center ">
-            
-            <div className="w-6/12 p-5">
-              <img src={data.images.jpg.large_image_url} className='rounded-xl  w-10/12 h-full m-auto'/>
+          <div className="flex justify-between items-center mt-36">
+            <div className="w-6/12 ">
+              <div>
+                <img src={data.images.jpg.large_image_url} className='rounded-xl  w-10/12 h-full m-auto'/>
+              </div>
+
+              <div className="flex justify-center items-center mt-5">
+                <button
+                  onClick={() => addList(data, 'anime')} 
+                  className="border-2 py-2 px-4 border-orange-500 rounded-2xl bg-orange-500 text-white hover:bg-black"
+                >
+                  {already ? 'Already Added' : 'Add to Watchlist'}
+                </button>
+              </div>
             </div>
             
             <div className="w-6/12 p-5 text-center">
-              <h2 className="text-3xl my-5 text-orange-500">
+              <h2 className="text-3xl my-5 text-orange-500 ">
                 {data.title_english}
               </h2>
               <p className="my-5"> 
@@ -96,7 +105,7 @@ const Anime = () => {
             ) : null
           }
 
-          <div className="my-2">
+          <div className="my-5">
             <Recommendations id={ id } type='anime'/>
           </div>
         </>

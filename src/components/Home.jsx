@@ -1,5 +1,4 @@
 import React from 'react'
-import ObitioIcon from '../svg/narutoIcon'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBookOpen, faList, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
@@ -10,8 +9,8 @@ const Home = () => {
 
   return (
     <>
-    <div className='showcase relative z-0 flex justify-center items-center'>
-      <div className='max'>
+    <div className='showcase relative z-30 flex justify-center items-center'>
+      <div className='max mt-36'>
         <div className='text-white w-6/12 border-2 rounded-2xl relative  mx-auto w-6/12  text-center '>
 
           <div className='absolute bg-black opacity-60 w-full h-full z-0 rounded-2xl'></div>

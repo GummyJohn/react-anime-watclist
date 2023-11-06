@@ -1,6 +1,6 @@
 import React from 'react'
 
-const narutoIcon = () => {
+const NarutoIcon = () => {
   return (
   <div className='flex justify-center	items-center'>
   <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="75px" height="75px" fill='#fff'>
@@ -11,4 +11,4 @@ const narutoIcon = () => {
   )
 }
 
-export default narutoIcon;
+export default NarutoIcon;

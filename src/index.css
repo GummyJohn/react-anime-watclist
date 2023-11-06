@@ -11,7 +11,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 50vh;
+  height: 55vh;
 }
 
 .navbar{
@@ -19,6 +19,10 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position:top ;
+}
+
+.added{
+  top:-1px;
 }
 
 .card_height{

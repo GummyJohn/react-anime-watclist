@@ -4,7 +4,7 @@ import Card from '../Card'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass, faSpinner, faXmark} from '@fortawesome/free-solid-svg-icons'
 
-const MangaSearch = () => {
+const MangaSearch = ({addList, already}) => {
   const [query, setQuery] = useState('');
   const [apiQuery, setApiQuery] = useState('');
 
@@ -21,15 +21,15 @@ const MangaSearch = () => {
 
   return (
     <div className="p-5 max m-auto">
-      <div className='text-orange-500 p-4 my-4 text-center'>
+      <div className='text-orange-500 p-4 my-4 text-center mt-36'>
         <label htmlFor="animeSearch" className='text-5xl'> 
-          Search for Animes :
+          Search for Mangas :
         </label>
 
-        <div className='border bg-white w-3/4 flex justify-between items-center mt-3 m-auto px-4'>
+        <div className='border bg-white w-3/4 flex justify-between items-center mt-5 m-auto px-4'>
           <FontAwesomeIcon icon={faMagnifyingGlass}/>
           <input 
-            className='p-2 w-full mx-3 focus:outline-none'
+            className='p-2 w-full mx-3 focus:outline-none text-black'
             type="text" 
             id="animeSearch"
             autoComplete = 'off'
@@ -64,28 +64,34 @@ const MangaSearch = () => {
           </div>
         }
 
-        {loading && (
-          <div className="w-full flex items-center justify-center ">
-              <FontAwesomeIcon icon={faSpinner} spin 
-                className="text-9xl"
-              />
-          </div>
-        )}
-
-        {data && (
-          <div className="grid grid-cols-5 gap-4 my-6">
-            {data.map((manga) => {
-              return (
-                <Card
-                  key={manga.mal_id}
-                  id={manga.mal_id}
-                  type='manga'
-                  image={manga.images.jpg.image_url}
+        {
+          loading 
+            ? 
+          (
+            <div className="w-full flex items-center justify-center mt-20 text-white">
+                <FontAwesomeIcon icon={faSpinner} spin 
+                  className="text-9xl"
                 />
-              )
-            })}
-          </div>
-        )}
+            </div>
+          )
+            :
+          (
+            <div className="grid grid-cols-5 gap-4 my-6">
+              {data.map((manga) => {
+                return (
+                  <Card
+                    key={manga.mal_id}
+                    id={manga.mal_id}
+                    type='manga'
+                    image={manga.images.jpg.image_url}
+                    onClick={() => addList(manga, 'manga')}
+                    already={already}
+                  />
+                )
+              })}
+            </div>
+          )
+        }
       </div>
     </div>
   )
