@@ -1,20 +1,18 @@
 import { Link } from 'react-router-dom'
-import ObitioIcon from '../svg/narutoIcon'
+import NarutoIcon from './NarutoIcon'
 import { useRef, useReducer } from 'react'
 import  {reducer, controls}  from '../JS/reducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire, faFont, faMagnifyingGlass, faTv, faBook ,faChevronRight} from '@fortawesome/free-solid-svg-icons'
 
-const NavBar = ({watchlist}) => {
-  const navBar = useRef();
-
+const NavBar = ({animelist, mangalist, added}) => {
   const [state, dispatch] = useReducer(reducer, controls)
   
 
   return (
-    <div className='navbar w-full'>
+    <div className='navbar w-full fixed z-40'>
       <div className='p-5 flex justify-between items-center max m-auto'>
-        <ObitioIcon/>
+        <NarutoIcon/>
 
         <div 
           className='flex justify-evenly	items-center mr-5 text-white text-lg'
@@ -203,6 +201,19 @@ const NavBar = ({watchlist}) => {
               My Lists
             </div>
 
+            {added && (
+              <div className='relative top-2'>
+                <div 
+                  className='absolute h-5 w-5 right-8 added rotate-45 bg-black border-orange-500 border-t-2 border-l-2 bg-black z-10'
+                >
+                </div>
+                <p className='absolute border-2 py-2 px-4 w-48 right-1 top-2 border-orange-500 rounded-2xl bg-black'>
+                  Added to your list!
+                </p>
+              </div>
+            )
+            }
+
             {state.showList && (
               <div className='relative z-10'
                 onMouseLeave={() => dispatch({type: 'close-menu'})}
@@ -220,7 +231,7 @@ const NavBar = ({watchlist}) => {
                       className='flex justify-between items-center'
                     >
                       Anime list : 
-                      <span className='ml-2'>{watchlist}</span>
+                      <span className='ml-2'>{animelist}</span>
                     </Link>
                   </div>
 
@@ -229,7 +240,7 @@ const NavBar = ({watchlist}) => {
                       className='flex justify-between items-center'
                     >
                       Magna list : 
-                      <span className='ml-2'>{watchlist}</span>
+                      <span className='ml-2'>{mangalist}</span>
                     </Link>
                   </div>
                 </div>

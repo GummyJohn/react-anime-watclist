@@ -4,20 +4,18 @@ import { useParams } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner} from '@fortawesome/free-solid-svg-icons'
 
-const Manga = () => {
+const Manga = ({addList, already}) => {
   const { id } = useParams();
   
   const {data: manga, loading, error, errorMsg} = fetchData(`https://api.jikan.moe/v4/manga/${id}/full`)
-
   const {data} = manga;
 
-  console.log(data)
   return (
     <div 
     className="border-2 rounded-2xl bg-white max m-auto py-1 px-2"
   >
     {loading && (
-      <div className="w-full flex items-center justify-center mt-5">
+      <div className="w-full flex items-center justify-center mt-36">
         <FontAwesomeIcon icon={faSpinner} spin 
           className="text-9xl"
         />
@@ -25,7 +23,7 @@ const Manga = () => {
     )}
 
     {error && 
-      <div>
+      <div className='mt-36'>
         <p className="text-red-600 text-4xl text-center mt-4">Sorry! Something went wrong :</p>
         <p className="text-red-600 text-4xl text-center mt-4">{errorMsg}</p>
       </div>
@@ -33,10 +31,21 @@ const Manga = () => {
 
     {data && (
       <>
-        <div className="flex justify-between items-center ">
-          
-          <div className="w-6/12 p-5">
-            <img src={data.images.jpg.large_image_url} className='rounded-xl  w-10/12 h-full m-auto'/>
+        <div className="flex justify-between items-center mt-36">
+
+          <div className="w-6/12 ">
+            <div>
+              <img src={data.images.jpg.large_image_url} className='rounded-xl  w-10/12 h-full m-auto'/>
+            </div>
+
+            <div className="flex justify-center items-center mt-5">
+              <button
+                onClick={() => addList(data, 'manga')} 
+                className="border-2 py-2 px-4 border-orange-500 rounded-2xl bg-orange-500 text-white hover:bg-black"
+              >
+                {already ? 'Already Added' : 'Add to Manga List'}
+              </button>
+            </div>
           </div>
           
           <div className="w-6/12 p-5 text-center">
@@ -78,8 +87,8 @@ const Manga = () => {
           </div>
         </div>
 
-        <div className='my-2'>
-          <Recommendations id={id} type='manga' />
+        <div className='my-5'>
+          <Recommendations id={id} type='manga'/>
         </div>
       </>
     )}

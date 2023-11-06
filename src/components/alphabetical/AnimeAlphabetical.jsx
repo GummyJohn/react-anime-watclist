@@ -5,7 +5,7 @@ import { useState, useEffect  } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
-const AnimeAlphabetical = () => {
+const AnimeAlphabetical = ({addList, already}) => {
   const savedAlph = localStorage.getItem('letter')
 
   const [alph, setAlph] = useState(savedAlph || 'a')
@@ -23,8 +23,8 @@ const AnimeAlphabetical = () => {
   return (
     <div className="bg-black h-screen">
       <div className="text-white bg-black">
-        <div className="mx-auto p-3 w-full ">
-          <div className="mt-2 mb-6">
+        <div className="mx-auto p-3 w-full">
+          <div className="mt-2 mb-6 mt-36">
             <AlphButtons onClick={(e) => setAlph(e.target.value)} letter={alph}/>
           </div>
 
@@ -36,20 +36,21 @@ const AnimeAlphabetical = () => {
               </div>
             }
 
-            {loading && (
-              <div className="w-full flex items-center justify-center ">
-                  <FontAwesomeIcon icon={faSpinner} spin 
-                    className="text-9xl"
-                  />
-              </div>
-            )}
-
-            {data && (
-              <div 
+            {
+              loading 
+                ? 
+              (
+                <div className="w-full flex items-center justify-center mt-36">
+                    <FontAwesomeIcon icon={faSpinner} spin 
+                      className="text-9xl"
+                    />
+                </div>
+              )
+                :
+              (<div 
                 className='m-auto max p-5'
               >
                 <div className="flex justify-between items-center ">
-
                   <button 
                     onClick={() => setPage(page - (page > 1 ? 1: 0))}
                     className='border-2 rounded-xl py-1 px-3 bg-orange-500 border-orange-500 hover:bg-black'
@@ -71,20 +72,22 @@ const AnimeAlphabetical = () => {
                 </div>
 
                 <div className="grid grid-cols-5 gap-4 my-5">
-                  {data.map((anime) => {
+                  {data && data.map((anime) => {
                     return (
                       <Card 
                         key={anime.mal_id}
                         type='anime'
                         id={anime.mal_id}
                         image={anime.images.jpg.image_url}
+                        onClick={() => addList(anime, 'anime')}
+                        already={already}
                       />
                     )
                   })}
 
                 </div>    
-              </div>
-            )}
+              </div>)
+            }
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 
-export function fetchData(url){
+function fetchData(url){
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(false)

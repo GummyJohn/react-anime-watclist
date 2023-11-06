@@ -4,14 +4,17 @@ import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
-const AnimePopular = ({addList}) => {
+const AnimePopular = ({addList, already}) => {
   const [page, setPage] = useState(1)
 
   const {data: animes, loading, error, errorMsg} = fetchData(`https://api.jikan.moe/v4/top/anime?page=${page}`)
   const { data } = animes
-
+  console.log(data)
   return (
     <div className='m-auto max p-5 bg-black text-orange-500'>
+        <h2 className="text-5xl mt-36 px-4">
+          Popular Animes:
+        </h2>
 
       {error && 
         <div>
@@ -20,19 +23,15 @@ const AnimePopular = ({addList}) => {
         </div>
       }
 
-      {loading && (
-        <div className="w-full flex items-center justify-center text-white">
+      {loading ? (
+        <div className="w-full flex items-center justify-center text-white mt-36">
             <FontAwesomeIcon icon={faSpinner} spin 
               className="text-9xl"
             />
         </div>
-      )}
-
-      {data && (
-        <div className="px-4">
-          <h2 className="text-5xl">
-            Popular Animes:
-          </h2>
+      )
+        :
+        <div className="px-4 my-2">
 
           <div className="flex justify-between items-center mt-10 text-white">
             <button 
@@ -56,22 +55,22 @@ const AnimePopular = ({addList}) => {
           </div>
 
           <div className="grid grid-cols-5 gap-4 my-6">
-            {data.map((anime) => {
+            {data && data.map((anime) => {
               return (
                 <Card 
                   key={anime.mal_id}
                   type='anime'
                   id={anime.mal_id}
                   image={anime.images.jpg.image_url}
-                  onClick={() => addList(anime)}
+                  onClick={() => addList(anime, 'anime')}
+                  already={already}
                 />
               ) 
               }
             )}
           </div>
         </div>
-      )}
-
+      }
     </div>
   )
 }

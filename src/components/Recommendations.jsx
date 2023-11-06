@@ -1,10 +1,10 @@
 import {useRef} from 'react'
 import fetchData from '../JS/api'
-import Card from './Card'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
 
-const Recommendations = ({ id, type }) => {
+const Recommendations = ({ id, type}) => {
   const recommendRef = useRef();
 
   const {data: related, error, errorMsg} = fetchData(`https://api.jikan.moe/v4/${type}/${id}/recommendations`)
@@ -47,17 +47,16 @@ const Recommendations = ({ id, type }) => {
           </button>
 
           <div className='overflow-hidden flex scroll-smooth pt-2' ref={recommendRef}>
-            {data && data.map((recommend) => {
+            {data.map((recommend) => {
               return (
                 <div className="mx-1" key={recommend.entry.mal_id}>
-
                   <div className="h-6/6 w-56 p-2">
-                    <Card
-                      type = 'manga'
-                      id={recommend.entry.mal_id}
-                      image={recommend.entry.images.jpg.large_image_url}
-                      title={recommend.entry.title}
-                    />
+                    <Link to={`/${type}/${recommend.entry.mal_id}`}>
+                      
+                      <img src={recommend.entry.images.jpg.large_image_url} alt="recommended-anime"  className='rounded-2xl card_height'/>
+
+                    </Link>
+                    <p className='text-center'>{recommend.entry.title}</p>
                   </div>
                 </div>
               )
