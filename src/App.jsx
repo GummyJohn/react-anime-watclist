@@ -45,6 +45,8 @@ function App() {
       animeItem.synopsis = obj.synopsis;
       
       setWatchList([...watchList, animeItem])
+      setAdded(true)
+      setTimeout(() => {setAdded(false)}, 1200)
     }
     if(type === 'manga') {
       for(let i = 0; i < readList.length; i++){
@@ -64,10 +66,10 @@ function App() {
       mangaItem.authors = obj.authors;
       
       setReadList([...readList, mangaItem])
+      setAdded(true)
+      setTimeout(() => {setAdded(false)}, 1200)
     }
     
-    setAdded(true)
-    setTimeout(() => {setAdded(false)}, 1200)
   }
 
   useEffect(() => {
