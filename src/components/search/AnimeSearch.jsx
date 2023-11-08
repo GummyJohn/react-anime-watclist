@@ -50,7 +50,7 @@ const AnimeSearch = ({addList, already}) => {
 
       <div>
         {error && 
-          <div className='mt-10'>
+          <div className='mt-36'>
             <p className="text-red-600 text-4xl text-center mt-4">
               Sorry!  Something went wrong :
             </p>
@@ -61,7 +61,6 @@ const AnimeSearch = ({addList, already}) => {
             <div className="text-red-600 text-9xl text-center mt-4">
               <FontAwesomeIcon icon={faXmark}/> 
             </div>
-
           </div>
         }
 
@@ -75,23 +74,25 @@ const AnimeSearch = ({addList, already}) => {
             </div>
           )
             :
-          (
-            <div className="grid grid-cols-5 gap-4 my-6">
-              {data.map((anime) => {
-                return (
-                  <Card
-                    key={anime.mal_id}
-                    id={anime.mal_id}
-                    type='anime'
-                    image={anime.images.jpg.image_url}
-                    onClick={() => addList(anime, 'anime')}
-                    already={already}
-                  />
-                )
-              })}
-            </div>
-
-          )
+          <>
+            {data && (
+              <div className="grid grid-cols-5 gap-4 my-6">
+                {data.map((anime) => {
+                  return (
+                    <Card
+                      key={anime.mal_id}
+                      id={anime.mal_id}
+                      type='anime'
+                      image={anime.images.jpg.image_url}
+                      onClick={() => addList(anime, 'anime')}
+                      already={already}
+                    />
+                  )
+                })}
+              </div>
+              )
+            }
+          </>
         }
       </div>
     </div>

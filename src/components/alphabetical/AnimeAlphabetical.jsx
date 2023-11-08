@@ -3,7 +3,7 @@ import Card from "../Card"
 import fetchData from "../../JS/api"
 import { useState, useEffect  } from "react"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSpinner, faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import { faSpinner, faArrowLeft, faArrowRight, faXmark} from '@fortawesome/free-solid-svg-icons'
 
 const AnimeAlphabetical = ({addList, already}) => {
   const savedAlph = localStorage.getItem('letter')
@@ -22,17 +22,46 @@ const AnimeAlphabetical = ({addList, already}) => {
 
   return (
     <div className="bg-black h-screen">
-      <div className="text-white bg-black">
+      <div className="text-white">
         <div className="mx-auto p-3 w-full">
           <div className="mt-2 mb-6 mt-36">
             <AlphButtons onClick={(e) => setAlph(e.target.value)} letter={alph}/>
           </div>
 
+          <div className="flex justify-between items-center px-5">
+            <button 
+              onClick={() => setPage(page - (page > 1 ? 1: 0))}
+              className='border-2 rounded-xl py-1 px-3 bg-orange-500 border-orange-500 hover:bg-black'
+            >
+              <FontAwesomeIcon icon={faArrowLeft}/> 
+            </button>
+
+            <div>
+              <span className="text-xl text-orange-500">{page}</span>
+              <span className="text-white">/50</span>
+            </div>
+
+            <button 
+              onClick={() => setPage(page + (page < 50 ? 1: 0))}
+              className='border-2 rounded-xl py-1 px-3 bg-orange-500 border-orange-500 hover:bg-black'
+            >
+              <FontAwesomeIcon icon={faArrowRight} /> 
+            </button>
+          </div>
+
           <div>
             {error && 
-              <div>
-                <p className="text-red-600 text-4xl text-center mt-4">Sorry! Something went wrong :</p>
-                <p className="text-red-600 text-4xl text-center mt-4">{errorMsg}</p>
+              <div className='mt-36'>
+                <p className="text-red-600 text-4xl text-center mt-4">
+                  Sorry!  Something went wrong :
+                </p>
+    
+                <p className="text-red-600 text-4xl text-center mt-4">        {errorMsg}
+                </p>
+    
+                <div className="text-red-600 text-9xl text-center mt-4">
+                  <FontAwesomeIcon icon={faXmark}/> 
+                </div>
               </div>
             }
 
@@ -47,46 +76,30 @@ const AnimeAlphabetical = ({addList, already}) => {
                 </div>
               )
                 :
-              (<div 
-                className='m-auto max p-5'
-              >
-                <div className="flex justify-between items-center ">
-                  <button 
-                    onClick={() => setPage(page - (page > 1 ? 1: 0))}
-                    className='border-2 rounded-xl py-1 px-3 bg-orange-500 border-orange-500 hover:bg-black'
+              <>
+                {data && (
+                  <div 
+                  className='m-auto max px-5'
                   >
-                    <FontAwesomeIcon icon={faArrowLeft}/> 
-                  </button>
-
-                  <div>
-                    <span className="text-xl text-orange-500">{page}</span>
-                    <span className="text-white">/50</span>
+                    <div className="grid grid-cols-5 gap-4 my-5">
+                      {data && data.map((anime) => {
+                        return (
+                          <Card 
+                            key={anime.mal_id}
+                            type='anime'
+                            id={anime.mal_id}
+                            image={anime.images.jpg.image_url}
+                            onClick={() => addList(anime, 'anime')}
+                            already={already}
+                          />
+                        )
+                      })}
+  
+                    </div>    
                   </div>
-
-                  <button 
-                    onClick={() => setPage(page + (page < 50 ? 1: 0))}
-                    className='border-2 rounded-xl py-1 px-3 bg-orange-500 border-orange-500 hover:bg-black'
-                  >
-                    <FontAwesomeIcon icon={faArrowRight} /> 
-                  </button>
-                </div>
-
-                <div className="grid grid-cols-5 gap-4 my-5">
-                  {data && data.map((anime) => {
-                    return (
-                      <Card 
-                        key={anime.mal_id}
-                        type='anime'
-                        id={anime.mal_id}
-                        image={anime.images.jpg.image_url}
-                        onClick={() => addList(anime, 'anime')}
-                        already={already}
-                      />
-                    )
-                  })}
-
-                </div>    
-              </div>)
+                  )
+                }
+              </>
             }
           </div>
         </div>

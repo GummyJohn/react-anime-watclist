@@ -49,7 +49,7 @@ const MangaSearch = ({addList, already}) => {
 
       <div>
         {error && 
-          <div className='mt-10'>
+          <div className='mt-36'>
             <p className="text-red-600 text-4xl text-center mt-4">
               Sorry!  Something went wrong :
             </p>
@@ -60,7 +60,6 @@ const MangaSearch = ({addList, already}) => {
             <div className="text-red-600 text-9xl text-center mt-4">
               <FontAwesomeIcon icon={faXmark}/> 
             </div>
-
           </div>
         }
 
@@ -75,22 +74,25 @@ const MangaSearch = ({addList, already}) => {
             </div>
           )
             :
-          (
-            <div className="grid grid-cols-5 gap-4 my-6">
-              {data.map((manga) => {
-                return (
-                  <Card
-                    key={manga.mal_id}
-                    id={manga.mal_id}
-                    type='manga'
-                    image={manga.images.jpg.image_url}
-                    onClick={() => addList(manga, 'manga')}
-                    already={already}
-                  />
-                )
-              })}
-            </div>
-          )
+          <>
+            {data && (
+              <div className="grid grid-cols-5 gap-4 my-6">
+                {data.map((manga) => {
+                  return (
+                    <Card
+                      key={manga.mal_id}
+                      id={manga.mal_id}
+                      type='manga'
+                      image={manga.images.jpg.image_url}
+                      onClick={() => addList(manga, 'manga')}
+                      already={already}
+                    />
+                  )
+                })}
+              </div>
+              )
+            }
+          </>
         }
       </div>
     </div>

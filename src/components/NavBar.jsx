@@ -1,16 +1,17 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import NarutoIcon from './NarutoIcon'
-import { useRef, useReducer } from 'react'
+import { useReducer } from 'react'
 import  {reducer, controls}  from '../JS/reducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire, faFont, faMagnifyingGlass, faTv, faBook ,faChevronRight} from '@fortawesome/free-solid-svg-icons'
 
 const NavBar = ({animelist, mangalist, added}) => {
+  const { pathname } = useLocation();
   const [state, dispatch] = useReducer(reducer, controls)
-  
 
   return (
-    <div className='navbar w-full fixed z-40'>
+    <div className={ pathname === '/' ? 'w-full fixed z-40' : 'navbar w-full fixed z-40'}
+    >
       <div className='p-5 flex justify-between items-center max m-auto'>
         <NarutoIcon/>
 
@@ -211,7 +212,7 @@ const NavBar = ({animelist, mangalist, added}) => {
                   Added to your list!
                 </p>
               </div>
-            )
+              )
             }
 
             {state.showList && (

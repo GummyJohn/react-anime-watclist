@@ -1,30 +1,54 @@
-import { useState, useEffect} from "react";
+import {useEffect, useReducer} from "react";
+
+function apiReducer(state, action){
+  switch (action.type){
+    case 'loading' : {
+      return {...state, loading: true}
+    }
+    case 'fetch-success' : {
+      return {
+        loading: false,
+        data: action.payload,
+        error: false,
+        errorMsg: ''
+      }
+    }
+    case 'fetch-failed' : {
+      return {
+        loading: false,
+        data: [],
+        error: true,
+        errorMsg: action.payload
+      }
+    }
+  }
+}
 
 function fetchData(url){
-  const [data, setData] = useState([])
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState(false)
-  const [errorMsg, setErrorMsg] = useState('')
+  const [state, dispatch] = useReducer(apiReducer, {
+    loading: false,
+    data: [],
+    error: false,
+    errorMsg: ''
+  })
 
 
   useEffect(() => {
     async function getData(){
       try{
-        setLoading(true);
+        dispatch({type: 'loading'})
         const response = await fetch(url);
         const data = await response.json();
-        setLoading(false);
-        setData(data);
+        dispatch({type: 'fetch-success', payload: data})
       }catch(err){
-        setError(true)
-        setErrorMsg(err.message)
+        dispatch({type: 'fetch-failed', payload: err.message})
       }
     }
 
-    getData()
+    getData();
   }, [url])
 
-  return {data, loading, error, errorMsg}
+  return state;
 }
 
 export default fetchData;

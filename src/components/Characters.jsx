@@ -29,7 +29,8 @@ const Characters = ({id}) => {
                   Sorry!  Something went wrong :
                 </p>
 
-                <p className="text-red-600 text-4xl text-center mt-4">        {errorMsg}
+                <p className="text-red-600 text-4xl text-center mt-4">       
+                 {errorMsg}
                 </p>
                 <p className="text-red-600 text-4xl text-center mt-4">Try reloading the page!</p>
               </div>
