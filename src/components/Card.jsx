@@ -2,22 +2,39 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
-
+import { motion } from 'framer-motion'
 
 const Card = ({image, id, type, title = '', onClick, already, customvalue}) => {
   const [hoverMsg, setHoverMsg] = useState(false)
+  const [flipped, setFlipped] = useState(false)
 
   return (
     <div>
       <div className='relative z-0'>
 
-        <div className='card_height'>
-          <Link to={`/${type}/${id}`}>
-            <img src={image} alt={type === 'anime' ? 'anime': 'magna'} className='h-full w-full rounded-2xl'/>
-          </Link>
-        </div>
+        <motion.div 
+          onMouseEnter={() => setFlipped(true)}
+          onMouseLeave={() => setFlipped(false)}
+          whileHover={{boxShadow: '0px 0px 20px orange'}}
+          className='h-[360px] rounded-2xl relative cursor-pointer'
+        > 
+          <img src={image} alt={type === 'anime' ? 'anime': 'magna'} className='h-full w-full rounded-2xl'/>
 
-
+          {flipped && (
+            <motion.div 
+              initial={{opacity: 0}}
+              animate={{opacity: 0.8}}
+              className='absolute h-full w-full top-0 bg-black opacity-70 rounded-2xl text-white '
+            >
+              <Link to={`/${type}/${id}`} 
+                className='flex flex-col items-center justify-center text-center items-center h-full'
+              >
+                <p className='my-10 w-10/12 text-orange-500 text-xl'>{title}</p>
+                <p>Click for more Details</p>
+              </Link>
+            </motion.div>
+          )}
+        </motion.div>
 
           <div 
             onMouseEnter={() => setHoverMsg(true)}
@@ -41,7 +58,6 @@ const Card = ({image, id, type, title = '', onClick, already, customvalue}) => {
             </div>
           )}
       </div>
-      <p className="text-sm text-center">{title}</p>
     </div>
 
   )

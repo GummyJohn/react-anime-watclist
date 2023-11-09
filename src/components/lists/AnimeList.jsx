@@ -1,10 +1,10 @@
 import { Link, useNavigate } from 'react-router-dom'
 import ReactPlayer from 'react-player'
-import fetchData from '../../JS/api'
-import { useState, useRef, useEffect, useLayoutEffect  } from 'react'
+import { useState, useRef, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight, faBars} from '@fortawesome/free-solid-svg-icons'
 import Recommendations from '../Recommendations'
+import { motion } from 'framer-motion'
 
 const AnimeList = ({ watchList, setWatchList, addList }) => {
   const navigate = useNavigate();
@@ -92,7 +92,11 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
             <div className='flex juistify-between items-center my-6'>
               <div className='w-6/12'>
                 <Link to={`/anime/${activeAnime.id}`}>
-                  <img src={activeAnime.image} alt="anime"  className='h-3/5 w-10/12 m-auto rounded-2xl border hover:border-orange-500'/>
+                  <motion.img 
+                    whileHover={{boxShadow: '0px 0px 20px orange'}}
+                    src={activeAnime.image} alt="anime"  
+                    className='h-3/5 w-10/12 m-auto rounded-2xl border hover:border-orange-500'
+                  />
                 </Link>
               </div>
 
@@ -111,7 +115,7 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
 
                 <div className='mb-3 rounded-2xl'>
                   {activeAnime.trailer.url === null ? 
-                  <p>
+                  <p className='w-10/12 m-auto'>
                     <span>Description: </span>
                     <span className='text-white'>{activeAnime.synopsis}</span> 
                   </p> : 

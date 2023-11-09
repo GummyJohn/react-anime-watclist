@@ -79,7 +79,7 @@ const AnimeAlphabetical = ({addList, already}) => {
               <>
                 {data && (
                   <div 
-                  className='m-auto max px-5'
+                  className='m-auto max-w-[1750px] px-5'
                   >
                     <div className="grid grid-cols-5 gap-4 my-5">
                       {data && data.map((anime) => {
@@ -91,6 +91,7 @@ const AnimeAlphabetical = ({addList, already}) => {
                             image={anime.images.jpg.image_url}
                             onClick={() => addList(anime, 'anime')}
                             already={already}
+                            title={anime.title_english === null ? anime.title: anime.title_english}
                           />
                         )
                       })}

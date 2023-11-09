@@ -41,7 +41,9 @@ function fetchData(url){
         const data = await response.json();
         dispatch({type: 'fetch-success', payload: data})
       }catch(err){
-        dispatch({type: 'fetch-failed', payload: err.message})
+        if(response.status !== 200){
+          dispatch({type: 'fetch-failed', payload: err.message})
+        }
       }
     }
 

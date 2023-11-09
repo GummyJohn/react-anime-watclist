@@ -69,7 +69,6 @@ function App() {
       setAdded(true)
       setTimeout(() => {setAdded(false)}, 1200)
     }
-    
   }
 
   useEffect(() => {
@@ -118,7 +117,6 @@ function App() {
         <Route path='/manga/alphabetical' 
           element={<MangaAlphabetical addList={addTolist} already={already}/>}
         />
-
       </Routes>
     </BrowserRouter>
   )

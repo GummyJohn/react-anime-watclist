@@ -11,7 +11,7 @@ const MagnaPopular = ({already, addList}) => {
   const {data} = mangas;
 
   return (
-    <div className='m-auto max p-5 bg-black text-orange-500'>
+    <div className='m-auto max-w-[1750px] p-5 bg-black text-orange-500'>
       <div className="px-4 my-2">
         <h2 className="text-5xl mt-36">
           Popular Mangas:
@@ -77,6 +77,7 @@ const MagnaPopular = ({already, addList}) => {
                       image={manga.images.jpg.image_url}
                       already={already}
                       onClick={() => addList(manga, 'manga')}
+                      title={manga.title_english === null ? manga.title: manga.title_english}
                     />
                   ) 
                   }

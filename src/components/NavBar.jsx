@@ -4,6 +4,7 @@ import { useReducer } from 'react'
 import  {reducer, controls}  from '../JS/reducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire, faFont, faMagnifyingGlass, faTv, faBook ,faChevronRight} from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
 
 const NavBar = ({animelist, mangalist, added}) => {
   const { pathname } = useLocation();
@@ -12,13 +13,19 @@ const NavBar = ({animelist, mangalist, added}) => {
   return (
     <div className={ pathname === '/' ? 'w-full fixed z-40' : 'navbar w-full fixed z-40'}
     >
-      <div className='p-5 flex justify-between items-center max m-auto'>
+      <motion.div 
+        initial={{y: '-100vw'}}
+        animate={{y: 0}}
+        transition={{delay: .2, stiffness: 10}}
+        className='p-5 flex justify-between items-center max-w-[1750px] m-auto'
+      >
         <NarutoIcon/>
 
         <div 
-          className='flex justify-evenly	items-center mr-5 text-white text-lg'
+          className='flex justify-evenly	items-center text-white text-lg'
         >
-          <div className='hover:text-orange-500 '
+          <div
+            className='hover:text-orange-500 '
             onMouseEnter={() => dispatch({type: 'close-menu'})}
           >
             <Link to='/' className='mx-4'>Home</Link>
@@ -40,7 +47,7 @@ const NavBar = ({animelist, mangalist, added}) => {
                   className=' bg-black absolute right-5 p-4 border-2 border-orange-500'
                 >
                   <div 
-                    className='absolute h-5 w-5 right-3 top_point rotate-45 bg-black border-orange-500 border-t-2 border-l-2'
+                    className='absolute h-5 w-5 right-3 top-[-11.5px] rotate-45 bg-black border-orange-500 border-t-2 border-l-2'
                   >
                   </div>
 
@@ -73,7 +80,7 @@ const NavBar = ({animelist, mangalist, added}) => {
                               className='absolute left-52 bg-black border-2 border-orange-500 px-3 top-1'
                             >
                               <div 
-                                className='w-5 h-5 absolute top-2 point  bg-black border-orange-500 border-b-2 border-l-2 rotate-45'
+                                className='w-5 h-5 absolute top-2 left-[-11.6px]  bg-black border-orange-500 border-b-2 border-l-2 rotate-45'
                               >
                               </div>
 
@@ -118,7 +125,7 @@ const NavBar = ({animelist, mangalist, added}) => {
                               className='absolute left-52 bg-black border-2 border-orange-500 px-3 top-1'
                             >
                               <div 
-                                className='w-5 h-5 absolute top-2 point  bg-black border-orange-500 border-b-2 border-l-2 rotate-45'
+                                className='w-5 h-5 absolute top-2 left-[-11.6px]  bg-black border-orange-500 border-b-2 border-l-2 rotate-45'
                               >
                               </div>
 
@@ -162,7 +169,7 @@ const NavBar = ({animelist, mangalist, added}) => {
                               className='absolute left-52 bg-black border-2 border-orange-500 px-3 top-1'
                             >
                               <div 
-                                className='w-5 h-5 absolute top-2 point  bg-black border-orange-500 border-b-2 border-l-2 rotate-45'
+                                className='w-5 h-5 absolute top-2 left-[-11.6px] bg-black border-orange-500 border-b-2 border-l-2 rotate-45'
                               >
                               </div>
 
@@ -205,7 +212,7 @@ const NavBar = ({animelist, mangalist, added}) => {
             {added && (
               <div className='relative top-2'>
                 <div 
-                  className='absolute h-5 w-5 right-8 added rotate-45 bg-black border-orange-500 border-t-2 border-l-2 bg-black z-10'
+                  className='absolute h-5 w-5 right-8 top-[-1px] rotate-45 bg-black border-orange-500 border-t-2 border-l-2 bg-black z-10'
                 >
                 </div>
                 <p className='absolute border-2 py-2 px-4 w-48 right-1 top-2 border-orange-500 rounded-2xl bg-black'>
@@ -223,7 +230,7 @@ const NavBar = ({animelist, mangalist, added}) => {
 
                 <div className=' bg-black absolute right-3 top-5 p-4 border-2 border-orange-500 w-44'>
                   <div 
-                    className='absolute h-5 w-5 right-3 top_point rotate-45 bg-black border-orange-500 border-t-2 border-l-2'
+                    className='absolute h-5 w-5 right-3 top-[-11.5px] rotate-45 bg-black border-orange-500 border-t-2 border-l-2'
                   >
                   </div>
 
@@ -251,7 +258,7 @@ const NavBar = ({animelist, mangalist, added}) => {
           </div>
 
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

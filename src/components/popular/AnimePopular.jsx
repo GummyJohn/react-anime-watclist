@@ -3,15 +3,16 @@ import Card from '../Card'
 import { useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner, faArrowLeft, faArrowRight, faXmark} from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
 
 const AnimePopular = ({addList, already}) => {
   const [page, setPage] = useState(1)
 
   const {data: animes, loading, error, errorMsg} = fetchData(`https://api.jikan.moe/v4/top/anime?page=${page}`)
   const { data } = animes
-  console.log(data)
+
   return (
-    <div className='m-auto max p-5 bg-black text-orange-500'>
+    <div className='m-auto max-w-[1750px] p-5 bg-black text-orange-500'>
       <div className="px-4 my-2">
         <h2 className="text-5xl mt-36">
           Popular Animes:
@@ -76,6 +77,7 @@ const AnimePopular = ({addList, already}) => {
                         image={anime.images.jpg.image_url}
                         onClick={() => addList(anime, 'anime')}
                         already={already}
+                        title={anime.title_english === null ? anime.title: anime.title_english}
                       />
                     ) 
                     })
