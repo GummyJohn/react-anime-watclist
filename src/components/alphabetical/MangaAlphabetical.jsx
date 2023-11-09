@@ -81,7 +81,7 @@ const MangaAlphabetical = ({addList, already}) => {
               <>
                 {data && (
                   <div 
-                    className='m-auto max px-5'
+                    className='m-auto max-w-[1750px] px-5'
                   >
                     <div className="grid grid-cols-5 gap-4 my-5">
                       {data.map((manga) => {
@@ -93,6 +93,7 @@ const MangaAlphabetical = ({addList, already}) => {
                             image={manga.images.jpg.image_url}
                             onClick={() => addList(manga, 'manga')}
                             already={already}
+                            title={manga.title_english === null ? manga.title: manga.title_english}
                           />
                         )
                       })}

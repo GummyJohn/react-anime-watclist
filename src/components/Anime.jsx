@@ -15,7 +15,7 @@ const Anime = ({already, addList}) => {
 
   return (
     <div 
-      className="border-2 rounded-2xl bg-white max m-auto py-1 px-2 "
+      className="border-2 rounded-2xl bg-white max-w-[1750px] m-auto py-1 px-2 "
     >
 
       {error && 

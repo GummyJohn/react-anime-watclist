@@ -20,7 +20,7 @@ const MangaSearch = ({addList, already}) => {
   }, [query])
 
   return (
-    <div className="p-5 max m-auto">
+    <div className="p-5 max-w-[1750px] m-auto">
       <div className='text-orange-500 p-4 my-4 text-center mt-36'>
         <label htmlFor="animeSearch" className='text-5xl'> 
           Search for Mangas :
@@ -86,6 +86,7 @@ const MangaSearch = ({addList, already}) => {
                       image={manga.images.jpg.image_url}
                       onClick={() => addList(manga, 'manga')}
                       already={already}
+                      title={manga.title_english === null ? manga.title: manga.title_english}
                     />
                   )
                 })}

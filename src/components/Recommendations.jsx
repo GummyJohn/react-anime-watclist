@@ -3,6 +3,7 @@ import fetchData from '../JS/api'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faArrowRight} from '@fortawesome/free-solid-svg-icons'
+import { motion } from 'framer-motion'
 
 const Recommendations = ({ id, type}) => {
   const recommendRef = useRef();
@@ -43,12 +44,14 @@ const Recommendations = ({ id, type}) => {
           <>
             {data && (
               <div className='flex justify-between items-center'>
-                <button 
-                  className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
-                  onClick={clickLeft}
-                >
-                  <FontAwesomeIcon icon={faArrowLeft}/> 
-                </button>
+                {data.length > 5 && (
+                  <button 
+                    className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
+                    onClick={clickLeft}
+                  >
+                    <FontAwesomeIcon icon={faArrowLeft}/> 
+                  </button>
+                )}
 
                 <div className='overflow-hidden flex scroll-smooth pt-2 px-3' ref={recommendRef}>
                   {data.map((recommend) => {
@@ -56,9 +59,11 @@ const Recommendations = ({ id, type}) => {
                       <div className="mx-1" key={recommend.entry.mal_id}>
                         <div className="h-6/6 w-56 p-2">
                           <Link to={`/${type}/${recommend.entry.mal_id}`}>
-                            
-                            <img src={recommend.entry.images.jpg.large_image_url} alt="recommended-anime"  className='rounded-2xl card_height'/>
-
+                            <motion.img 
+                              whileHover={{boxShadow: '0px 0px 20px orange'}}
+                              src={recommend.entry.images.jpg.large_image_url} 
+                              alt="recommended-anime"  className='rounded-2xl h-[360px]'
+                            />
                           </Link>
                           <p className='text-center'>{recommend.entry.title}</p>
                         </div>
@@ -67,13 +72,14 @@ const Recommendations = ({ id, type}) => {
                   })}
                 </div>
 
-                <button 
-                  className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
-                  onClick={clickRight}
-                >
-                  <FontAwesomeIcon icon={faArrowRight} /> 
-                </button>
-
+                {data.length > 5 && (
+                  <button 
+                    className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
+                    onClick={clickRight}
+                  >
+                    <FontAwesomeIcon icon={faArrowRight} /> 
+                  </button>
+                )}
               </div>
             )}
 
