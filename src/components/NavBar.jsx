@@ -11,7 +11,8 @@ const NavBar = ({animelist, mangalist, added}) => {
   const [state, dispatch] = useReducer(reducer, controls)
 
   return (
-    <div className={ pathname === '/' ? 'w-full fixed z-40' : 'navbar w-full fixed z-40'}
+    <div 
+    className={ pathname === '/' ? 'w-full fixed z-40' : 'navbar w-full fixed z-40 '}
     >
       <motion.div 
         initial={{y: '-100vw'}}

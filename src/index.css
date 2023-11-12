@@ -12,3 +12,66 @@ body{
   background-size: cover;
   background-position:top ;
 }
+
+.bar::-webkit-scrollbar{
+  width: 0px;
+}
+
+@media only screen and (max-width: 500px){
+  .phone_media_hidden{
+    display: none;
+    visibility: collapse;
+  }
+  
+  .phone_media_show{
+    visibility: visible;
+  }
+
+  .phone_media_height{
+    height: 100%;
+    margin-top: 1rem;
+    border: 1px solid white;
+  }
+
+  .phone_media_pm{
+    padding: 0;
+    margin: 0;
+  }
+
+  
+  .phone_media_padding{
+    padding: .5rem;
+    padding-left: 1rem;
+  }
+  
+  .phone_media_margin{
+    margin-bottom: 1.5rem;
+  }
+  
+  .phone_media_width{
+    width: 100%;
+  }
+  
+  .phone_media_flex{
+    flex-direction: column;
+  }
+
+  .phone_media_grid{
+    grid-template-columns: 1fr;
+  }
+
+  .phone_media_fauto{
+    overflow: auto;
+  }
+
+  .phone_media_textscroll{
+    height: 350px;
+    overflow: auto;
+    padding: .8rem;
+  }
+
+  .phone_media_player{
+    height: 200px;
+    width: 100%;
+  }
+}
