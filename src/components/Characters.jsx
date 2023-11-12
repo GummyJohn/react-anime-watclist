@@ -23,19 +23,6 @@ const Characters = ({id}) => {
         <div className="my-3 p-3">
           <h2 className="text-3xl text-orange-500 mb-2">Characters: </h2>
           <div className="flex justify-center items-center">
-            {error && 
-              <div className='mt-10'>
-                <p className="text-red-600 text-4xl text-center mt-4">
-                  Sorry!  Something went wrong :
-                </p>
-
-                <p className="text-red-600 text-4xl text-center mt-4">       
-                 {errorMsg}
-                </p>
-                <p className="text-red-600 text-4xl text-center mt-4">Try reloading the page!</p>
-              </div>
-            }
-    
             <button 
               className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
               onClick={clickLeft}

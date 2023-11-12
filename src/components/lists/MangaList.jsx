@@ -28,7 +28,7 @@ const MangaList = ({readList, setReadList}) => {
   function setDisplayManga(manga){
     setActiveManga(manga)
     window.scrollTo({
-      top: 500,
+      top: 450,
       behavior: "smooth",
     });
   }
@@ -38,7 +38,8 @@ const MangaList = ({readList, setReadList}) => {
       setActiveManga(readList[0])
     }
   }, [activeManga])
-  console.log(activeManga)
+
+
   return (
     <div className='text-orange-500 max m-auto p-4'>
       <h2 className='text-5xl mb-5 mt-36 '>
@@ -46,7 +47,7 @@ const MangaList = ({readList, setReadList}) => {
       </h2>
 
       <div className=''>
-        <div className='flex items-center overflow-hidden scroll-smooth' ref={mangalistCarousel}>
+        <div className='flex items-center overflow-hidden scroll-smooth bar phone_media_fauto' ref={mangalistCarousel}>
           {readList.map((manga) => {
             return (
               <div 
@@ -64,9 +65,9 @@ const MangaList = ({readList, setReadList}) => {
           })}
         </div>
       
-        <div className='flex justify-between items-center my-5 px-4'>
+        <div className='flex justify-between items-center my-5 px-4 phone_media_hidden'>
           <button 
-            className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
+            className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black '
             onClick={clickLeft}
           >
             <FontAwesomeIcon icon={faArrowLeft}/> 
@@ -86,16 +87,16 @@ const MangaList = ({readList, setReadList}) => {
       {Object.keys(activeManga).length !== 0 ? (
         <>
           <div 
-            className='border border-orange-500 rounded-2xl'
+            className='border border-orange-500 rounded-2xl phone_media_height'
           >
-            <div className='flex juistify-between items-center my-6'>
+            <div className='flex juistify-between items-center my-6 phone_media_flex'>
               <div className='w-6/12'>
                 <Link to={`/manga/${activeManga.id}`}>
                   <img src={activeManga.image} alt="manga"  className='h-3/5 w-10/12 m-auto rounded-2xl border hover:border-orange-500'/>
                 </Link>
               </div>
 
-              <div className='w-6/12 flex flex-col justify-center items-center'>
+              <div className='w-6/12 flex flex-col justify-center items-center phone_media_width'>
 
                 <h2 className='text-3xl mb-3 w-8/12 text-center'>{activeManga.title}</h2>
                 <p className='mb-3'>
@@ -106,14 +107,14 @@ const MangaList = ({readList, setReadList}) => {
                   <span> Authors :</span> 
                   <span className='text-white'>{activeManga.authors.map((auth) => {
                     return (
-                      <span>{auth.name}, </span>
+                      <span key={auth.name}>{auth.name}, </span>
                     )                    
                   })}</span>
                 </p>
 
 
                 <div className='my-3 px-3'>
-                  <p>
+                  <p className = 'phone_media_textscroll'>
                     <span>Description: </span>
                     <span className='text-white'>{activeManga.synopsis}</span>
                   </p> 
@@ -132,7 +133,7 @@ const MangaList = ({readList, setReadList}) => {
                     onClick={() => remove(activeManga)} 
                     className='border-2 py-2 px-4 rounded-2xl bg-orange-500 border-orange-500 text-white hover:bg-red-700'
                   >
-                    Read
+                    Remove
                   </button>
                 </div>
 
@@ -146,7 +147,7 @@ const MangaList = ({readList, setReadList}) => {
         </>
       )
       : 
-        <div className='flex flex-col justify-center items-center text-5xl my-10'>
+        <div className='flex flex-col justify-center items-center text-5xl my-24 x'>
           <h1>
             Your Manga List is currently Empty!
           </h1>

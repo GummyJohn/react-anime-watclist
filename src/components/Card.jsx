@@ -18,7 +18,9 @@ const Card = ({image, id, type, title = '', onClick, already, customvalue}) => {
           whileHover={{boxShadow: '0px 0px 20px orange'}}
           className='h-[360px] rounded-2xl relative cursor-pointer'
         > 
-          <img src={image} alt={type === 'anime' ? 'anime': 'magna'} className='h-full w-full rounded-2xl'/>
+          <Link to={`/${type}/${id}`}>
+            <img src={image} alt={type === 'anime' ? 'anime': 'magna'} className='h-full w-full rounded-2xl'/>
+          </Link>
 
           {flipped && (
             <motion.div 

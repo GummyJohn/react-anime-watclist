@@ -76,7 +76,7 @@ const MangaSearch = ({addList, already}) => {
             :
           <>
             {data && (
-              <div className="grid grid-cols-5 gap-4 my-6">
+              <div className="grid grid-cols-5 gap-4 my-5 phone_media_grid">
                 {data.map((manga) => {
                   return (
                     <Card

@@ -6,7 +6,7 @@ import { faArrowLeft, faArrowRight, faBars} from '@fortawesome/free-solid-svg-ic
 import Recommendations from '../Recommendations'
 import { motion } from 'framer-motion'
 
-const AnimeList = ({ watchList, setWatchList, addList }) => {
+const AnimeList = ({ watchList, setWatchList}) => {
   const navigate = useNavigate();
   const watchlistCarousel = useRef();
   const [activeAnime, setActiveAnime] = useState({})
@@ -29,7 +29,7 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
   function setDisplayAnime(anime){
     setActiveAnime(anime)
     window.scrollTo({
-      top: 500,
+      top: 450,
       behavior: "smooth",
     });
   }
@@ -47,7 +47,7 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
       </h2>
 
       <div className=''>
-        <div className='flex items-center overflow-hidden scroll-smooth' ref={watchlistCarousel}>
+        <div className='flex items-center overflow-hidden scroll-smooth  bar phone_media_fauto' ref={watchlistCarousel}>
           {watchList.map((anime) => {
             return (
               <div 
@@ -65,7 +65,7 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
           })}
         </div>
         
-        <div className='flex justify-between items-center mt-2 mb-5 px-4'>
+        <div className='flex justify-between items-center mt-2 mb-5 px-4 phone_media_hidden'>
           <button 
             className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black'
             onClick={clickLeft}
@@ -87,9 +87,9 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
       {Object.keys(activeAnime).length !== 0 ? (
         <>
           <div 
-            className='border border-orange-500 rounded-2xl'
+            className='border border-orange-500 rounded-2xl phone_media_height'
           >
-            <div className='flex juistify-between items-center my-6'>
+            <div className='flex juistify-between items-center my-6 phone_media_flex'>
               <div className='w-6/12'>
                 <Link to={`/anime/${activeAnime.id}`}>
                   <motion.img 
@@ -100,7 +100,7 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
                 </Link>
               </div>
 
-              <div className='w-6/12 flex flex-col justify-center items-center'>
+              <div className='w-6/12 flex flex-col justify-center items-center phone_media_width '>
 
                 <h2 className='text-3xl mb-3 w-8/12 text-center'>{activeAnime.title}</h2>
                 <p className='mb-3'>
@@ -112,20 +112,21 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
                   <span className='text-white'>{activeAnime.duration}</span>
                 </p>
 
-
-                <div className='mb-3 rounded-2xl'>
+                <div className='mb-3 rounded-2xl '>
                   {activeAnime.trailer.url === null ? 
-                  <p className='w-10/12 m-auto'>
+                  <p className='w-10/12 m-auto phone_media_textscroll'>
                     <span>Description: </span>
                     <span className='text-white'>{activeAnime.synopsis}</span> 
                   </p> : 
+                  <div className='h-[300px] w-[500px] phone_media_player'>
                     <ReactPlayer 
                       url={activeAnime.trailer.url}
                       controls={true}
-                      height= '300px'
-                      width = '500px'
+                      height= '100%'
+                      width = '100%'
                       className = 'border border-orange-500'
                     />
+                  </div>
                   }
                 </div>
 
@@ -159,7 +160,7 @@ const AnimeList = ({ watchList, setWatchList, addList }) => {
         </>
       )
       : 
-      <div className='flex flex-col justify-center items-center text-5xl my-10'>
+      <div className='flex flex-col justify-center items-center text-5xl my-24'>
         <h1>
           Your Watchlist is currently Empty!
         </h1>
