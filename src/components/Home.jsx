@@ -69,7 +69,7 @@ const Home = () => {
         style={bgImg}
         className='flex justify-center items-center relative'
       > 
-        
+
         <div className='max-w-[1750px] mt-12 flex items-center px-5 '>
           <button
             className=' text-white p-2 rounded-full hover:bg-black phone_media_hidden'
@@ -157,7 +157,7 @@ const Home = () => {
           animate={{y: 0}}
           whileHover={{scale: 1.1, boxShadow: '0px 0px 20px orange'}}
           transition={{delay: .2, stiffness: 10}}
-          className="text-center border-2 p-4 w-full mx-5 rounded-3xl h-[500px] phone_media_pm phone_media_margin"
+          className="text-center border-2 p-4 w-full mx-5 rounded-3xl h-[500px] phone_media_pm phone_media_margin "
         >
           <FontAwesomeIcon 
             icon={faMagnifyingGlass} className='text-5xl my-4 text-orange-500'
