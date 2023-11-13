@@ -107,7 +107,7 @@ function App() {
         <Route path='/anime/popular' 
           element={<AnimePopular addList={addTolist} already={already}/>}
         />
-        <Route path='/magna/popular' 
+        <Route path='/manga/popular' 
           element={<MagnaPopular addList={addTolist} already={already}/>}
         />
 

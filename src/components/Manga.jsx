@@ -16,19 +16,19 @@ const Manga = ({addList, already}) => {
   >
 
     {error && 
-       <div className='mt-56 h-screen'>
-       <p className="text-red-600 text-4xl text-center mt-4">
-         Sorry!  Something went wrong :
-       </p>
+      <div className='mt-56 h-screen'>
+        <p className="text-red-600 text-4xl text-center mt-4">
+          Sorry!  Something went wrong :
+        </p>
 
-       <p className="text-red-600 text-4xl text-center mt-4">        {errorMsg}
-       </p>
+        <p className="text-red-600 text-4xl text-center mt-4">        {errorMsg}
+        </p>
 
-       <p className="text-red-600 text-4xl text-center mt-4">Try refreshing the page</p>
+        <p className="text-red-600 text-4xl text-center mt-4">Try refreshing the page</p>
 
-       <div className="text-red-600 text-9xl text-center mt-4">
-         <FontAwesomeIcon icon={faXmark}/> 
-       </div>
+        <div className="text-red-600 text-9xl text-center mt-4">
+          <FontAwesomeIcon icon={faXmark}/> 
+        </div>
      </div>
     }
 
@@ -47,7 +47,7 @@ const Manga = ({addList, already}) => {
         <>
           {data && (
             <>
-              <div className="flex justify-between items-center mt-36">
+              <div className="flex justify-between items-center mt-36 phone_media_flex">
 
                 <div className="w-6/12 ">
                   <div>
@@ -64,7 +64,7 @@ const Manga = ({addList, already}) => {
                   </div>
                 </div>
                 
-                <div className="w-6/12 p-5 text-center">
+                <div className="w-6/12 p-5 text-center phone_media_width">
                   <h2 className="text-3xl my-5 text-orange-500">
                     {data.title_english === null ? data.title : data.title_english}
                   </h2>
@@ -78,12 +78,12 @@ const Manga = ({addList, already}) => {
                     /10
                   </p>
 
-                  <div>
+                  <div className='text-center'>
                     {data.genres.length === 0 ? 
                       ''
                       :
                       <div>
-                        <span className="text-xl text-orange-500">Genres: </span>
+                        <p className="text-xl text-orange-500">Genres: </p>
                         {data.genres.map((genre) => {
                           return (
                             <span className="mx-1">{genre.name}</span>
@@ -95,7 +95,7 @@ const Manga = ({addList, already}) => {
 
 
 
-                  <p className="text-left mt-5 w-10/12 m-auto">
+                  <p className="text-left mt-5 w-10/12 m-auto phone_media_textscroll">
                     <span className="text-xl text-orange-500">Description: </span>
                     {data.synopsis === null ? <p>Manga not popular enough to have a description about it!</p> : data.synopsis}
                   </p>

@@ -50,7 +50,12 @@ const Anime = ({already, addList}) => {
           <>
             {data && (
               <div>
-                <div className="flex justify-between items-center mt-36">
+                <div 
+                  className="
+                    flex justify-between items-center mt-36
+                    phone_media_flex 
+                  "
+                >
                   <div className="w-6/12 ">
                     <div>
                       <img src={data.images.jpg.large_image_url} className='rounded-xl  w-10/12 h-full m-auto'/>
@@ -66,7 +71,9 @@ const Anime = ({already, addList}) => {
                     </div>
                   </div>
                   
-                  <div className="w-6/12 p-5 text-center">
+                  <div 
+                    className="w-6/12 p-5 text-center      phone_media_width"
+                  >
                     <h2 className="text-3xl my-5 text-orange-500 ">
                       {data.title_english}
                     </h2>
@@ -86,14 +93,14 @@ const Anime = ({already, addList}) => {
                       <span className="text-xl text-orange-500">Genres: </span>
                       {data.genres.map((genre) => {
                         return (
-                          <span className="mx-1">{genre.name}</span>
+                          <span className="mx-1" key={genre.name}>{genre.name}</span>
                         )
                       })}
                     </div>
 
             
 
-                    <p className="text-left mt-5 w-10/12 m-auto">
+                    <p className="text-left mt-5 w-10/12 m-auto phone_media_textscroll">
                       <span className="text-xl text-orange-500">Description: </span>
                       {data.synopsis}
                     </p>
@@ -109,12 +116,12 @@ const Anime = ({already, addList}) => {
                 {data.trailer.url ?  (
                   <div className="py-4  text-center mt-5">
                     <h2 className="text-3xl text-orange-500">Trailer: </h2>
-                    <div className="flex justify-center items-center my-5">
+                    <div className="flex justify-center items-center my-5 h-[450px] w-[800px] m-auto phone_media_player">
                       <ReactPlayer 
                         url={data.trailer.url}
                         controls={true}
-                        height='450px'
-                        width= '800px'
+                        height='100%'
+                        width= '100%'
                       />
                     </div>
                   </div>
