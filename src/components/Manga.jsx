@@ -47,7 +47,7 @@ const Manga = ({addList, already}) => {
         <>
           {data && (
             <>
-              <div className="flex justify-between items-center mt-36 phone_media_flex">
+              <div className="flex flex-col justify-between items-center mt-36 sm:flex-row">
 
                 <div className="w-6/12 ">
                   <div>
@@ -64,7 +64,7 @@ const Manga = ({addList, already}) => {
                   </div>
                 </div>
                 
-                <div className="w-6/12 p-5 text-center phone_media_width">
+                <div className="p-5 text-center w-full sm:w-6/12">
                   <h2 className="text-3xl my-5 text-orange-500">
                     {data.title_english === null ? data.title : data.title_english}
                   </h2>
@@ -95,7 +95,7 @@ const Manga = ({addList, already}) => {
 
 
 
-                  <p className="text-left mt-5 w-10/12 m-auto phone_media_textscroll">
+                  <p className="text-left mt-5 w-10/12 m-auto h-[350px] overflow-auto p-[.8rem] w-full">
                     <span className="text-xl text-orange-500">Description: </span>
                     {data.synopsis === null ? <p>Manga not popular enough to have a description about it!</p> : data.synopsis}
                   </p>

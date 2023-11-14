@@ -81,7 +81,9 @@ const AnimeAlphabetical = ({addList, already}) => {
                   <div 
                   className='m-auto max-w-[1750px] px-5'
                   >
-                    <div className="grid grid-cols-5 gap-4 my-5 phone_media_grid">
+                    <div className="
+                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-5
+                    ">
                       {data && data.map((anime) => {
                         return (
                           <Card 

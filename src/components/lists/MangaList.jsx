@@ -47,7 +47,13 @@ const MangaList = ({readList, setReadList}) => {
       </h2>
 
       <div className=''>
-        <div className='flex items-center overflow-hidden scroll-smooth bar phone_media_fauto' ref={mangalistCarousel}>
+        <div 
+          ref={mangalistCarousel}
+          className='
+            flex items-center overflow-auto bar 
+            sm:overflow-hidden sm:scroll-smooth
+          '
+        >
           {readList.map((manga) => {
             return (
               <div 
@@ -65,7 +71,11 @@ const MangaList = ({readList, setReadList}) => {
           })}
         </div>
       
-        <div className='flex justify-between items-center my-5 px-4 phone_media_hidden'>
+        <div 
+          className='
+            hidden sm:flex sm:justify-between sm:items-center sm:mt-2 sm:mb-5 sm:px-4 sm:inline
+          '
+        >
           <button 
             className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black '
             onClick={clickLeft}
@@ -87,16 +97,16 @@ const MangaList = ({readList, setReadList}) => {
       {Object.keys(activeManga).length !== 0 ? (
         <>
           <div 
-            className='border border-orange-500 rounded-2xl phone_media_height'
+             className='h-full border border-orange-500 rounded-2xl'
           >
-            <div className='flex juistify-between items-center my-6 phone_media_flex'>
+            <div className='flex flex-col juistify-between items-center my-6 sm:flex-row'>
               <div className='w-6/12'>
                 <Link to={`/manga/${activeManga.id}`}>
                   <img src={activeManga.image} alt="manga"  className='h-3/5 w-10/12 m-auto rounded-2xl border hover:border-orange-500'/>
                 </Link>
               </div>
 
-              <div className='w-6/12 flex flex-col justify-center items-center phone_media_width'>
+              <div className=' w-full flex flex-col justify-center items-center sm:w-6/12'>
 
                 <h2 className='text-3xl mb-3 w-8/12 text-center'>{activeManga.title}</h2>
                 <p className='mb-3'>
@@ -114,7 +124,7 @@ const MangaList = ({readList, setReadList}) => {
 
 
                 <div className='my-3 px-3'>
-                  <p className = 'phone_media_textscroll'>
+                  <p className='h-[350px] overflow-auto p-[.8rem] sm:w-10/12 sm:m-auto '>
                     <span>Description: </span>
                     <span className='text-white'>{activeManga.synopsis}</span>
                   </p> 

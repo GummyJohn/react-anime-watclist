@@ -15,7 +15,10 @@ const NavBar = ({animelist, mangalist, added}) => {
     <>
       <HamburgerMenu added={added}/>
       <div 
-      className={ pathname === '/' ? 'w-full fixed z-40 phone_media_hidden' : 'navbar w-full fixed z-40 phone_media_hidden'}
+      className={ 
+          pathname === '/' ? 
+          'hidden w-full fixed z-40 sm:inline' : 
+          'navbar w-full fixed z-40 hidden sm:inline'}
       >
         <motion.div 
           initial={{y: '-100vw'}}

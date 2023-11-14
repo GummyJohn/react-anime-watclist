@@ -32,10 +32,11 @@ function HamburgerMenu({added}) {
  
   return (
     <div 
-      className= 'fixed z-10  w-full h-20 hidden phone_media_show fixed navbar'
+      className= 
+        'fixed z-10 w-full h-20 navbar sm:hidden'
     >
       {/* shows on phones */}
-      <div className='fixed z-10 top-3 hidden phone_media_show w-full text-center'>
+      <div className='fixed z-10 top-3 w-full text-center'>
         <h1 className='py-2 px-4 text-white text-3xl'>Anime Horizon</h1>
       </div>
 
@@ -53,7 +54,7 @@ function HamburgerMenu({added}) {
       }
 
       <div 
-        className='bg-black border-2 h-10 w-10 border-orange-500 flex  items-center rounded-[50%] m-5 fixed z-30 invisible phone_media_show
+        className='bg-black border-2 h-10 w-10 border-orange-500 flex  items-center rounded-[50%] m-5 fixed z-30 
         '>
 
         <button 
@@ -169,7 +170,7 @@ function HamburgerMenu({added}) {
                               >
                                 Anime
                               </Link>
-                              <Link to='/anime/alphabetical'
+                              <Link to='/manga/alphabetical'
                                 onClick={() => toggleSection('showMenu')}
                                 className='my-1'
                               >

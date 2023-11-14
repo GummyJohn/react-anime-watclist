@@ -13,7 +13,10 @@ const AlphButtons = ({onClick, letter}) => {
 
   return ( 
     <div>
-      <div className='h-9 m-auto flex align-center justify-center phone_media_hidden'>
+      <div className='
+        h-13  flex align-center justify-start overflow-auto pl-2 w-[80%] m-auto bar mt-[-10px]
+        sm:justify-center sm:w-full
+      '>
         {alphabet.map((alph) => {
           return (
             <button key={alph} value={alph} onClick={onClick}
@@ -23,21 +26,6 @@ const AlphButtons = ({onClick, letter}) => {
             </button>
           )
         })}
-      </div>
-
-      {/* show on phones */}
-      <div className=" flex items-center collapse phone_media_show">
-        <div className="flex overflow-auto pl-2 w-[80%] m-auto bar">
-          {alphabet.map((alph) => {
-            return (
-              <button key={alph} value={alph} onClick={onClick}
-                className={ letter === alph ? 'px-2 mx-2 text-orange-500 text-2xl' : 'px-2 mx-2'}
-              >
-                {alph.toUpperCase()}
-              </button>
-            )
-          })}
-        </div>
       </div>
     </div> 
   )
