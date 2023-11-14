@@ -24,13 +24,14 @@ const Characters = ({id}) => {
           <h2 className="text-3xl text-orange-500 mb-2">Characters: </h2>
           <div className="flex justify-center items-center">
             <button 
-              className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black phone_media_hidden'
+              className=' hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black sm:inline
+              '
               onClick={clickLeft}
             >
               <FontAwesomeIcon icon={faArrowLeft}/> 
             </button>
     
-            <div className="flex overflow-hidden scroll-smooth phone_media_fauto" ref={carouselContainer}>        
+            <div className="flex overflow-auto sm:overflow-hidden sm:scroll-smooth " ref={carouselContainer}>        
     
               {data.map((char) => {
                 return (
@@ -55,7 +56,10 @@ const Characters = ({id}) => {
             </div>
               
             <button 
-              className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black phone_media_hidden'
+                className='
+                hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                sm:inline
+              '
               onClick={clickRight}
             >
               <FontAwesomeIcon icon={faArrowRight} /> 

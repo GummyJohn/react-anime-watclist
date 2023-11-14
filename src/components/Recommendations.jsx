@@ -46,14 +46,22 @@ const Recommendations = ({ id, type}) => {
               <div className='flex justify-between items-center'>
                 {data.length > 5 && (
                   <button 
-                    className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black phone_media_hidden'
+                    className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                    sm:inline 
+                  '
                     onClick={clickLeft}
                   >
                     <FontAwesomeIcon icon={faArrowLeft}/> 
                   </button>
                 )}
 
-                <div className='overflow-hidden flex scroll-smooth pt-2 px-3 phone_media_fauto bar' ref={recommendRef}>
+                <div 
+                  ref={recommendRef}
+                  className='
+                    flex pt-2 px-3 bar overflow-auto
+                    sm:scroll-smooth sm:overflow-hidden
+                  ' 
+                >
                   {data.map((recommend) => {
                     return (
                       <div className="mx-1" key={recommend.entry.mal_id}>
@@ -74,7 +82,9 @@ const Recommendations = ({ id, type}) => {
 
                 {data.length > 5 && (
                   <button 
-                    className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black phone_media_hidden'
+                    className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                    sm:inline
+                    '
                     onClick={clickRight}
                   >
                     <FontAwesomeIcon icon={faArrowRight} /> 

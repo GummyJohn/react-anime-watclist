@@ -52,8 +52,8 @@ const Anime = ({already, addList}) => {
               <div>
                 <div 
                   className="
-                    flex justify-between items-center mt-36
-                    phone_media_flex 
+                    flex flex-col justify-between items-center mt-36
+                    sm:flex-row 
                   "
                 >
                   <div className="w-6/12 ">
@@ -72,7 +72,7 @@ const Anime = ({already, addList}) => {
                   </div>
                   
                   <div 
-                    className="w-6/12 p-5 text-center      phone_media_width"
+                    className="w-full p-5 text-center sm:w-6/12"
                   >
                     <h2 className="text-3xl my-5 text-orange-500 ">
                       {data.title_english}
@@ -98,9 +98,9 @@ const Anime = ({already, addList}) => {
                       })}
                     </div>
 
-            
-
-                    <p className="text-left mt-5 w-10/12 m-auto phone_media_textscroll">
+                    <p 
+                      className="text-left mt-5 w-10/12 m-auto h-[350px] overflow-auto p-[.8rem] w-full"
+                    >
                       <span className="text-xl text-orange-500">Description: </span>
                       {data.synopsis}
                     </p>
@@ -116,7 +116,11 @@ const Anime = ({already, addList}) => {
                 {data.trailer.url ?  (
                   <div className="py-4  text-center mt-5">
                     <h2 className="text-3xl text-orange-500">Trailer: </h2>
-                    <div className="flex justify-center items-center my-5 h-[450px] w-[800px] m-auto phone_media_player">
+                    <div 
+                      className="flex justify-center items-center my-5 h-[200px] w-full m-auto 
+                      sm:h-[450px] sn:w-[800px]
+                      "
+                    >
                       <ReactPlayer 
                         url={data.trailer.url}
                         controls={true}
