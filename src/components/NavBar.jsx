@@ -17,8 +17,8 @@ const NavBar = ({animelist, mangalist, added}) => {
       <div 
       className={ 
           pathname === '/' ? 
-          'hidden w-full fixed z-40 sm:inline' : 
-          'navbar w-full fixed z-40 hidden sm:inline'}
+          'hidden w-full fixed z-40 sm:hidden md:inline' : 
+          'navbar w-full fixed z-40 hidden sm:hidden md:inline'}
       >
         <motion.div 
           initial={{y: '-100vw'}}

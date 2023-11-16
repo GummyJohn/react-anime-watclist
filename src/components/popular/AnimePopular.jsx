@@ -68,7 +68,8 @@ const AnimePopular = ({addList, already}) => {
             (
               <div className="px-4 my-2">      
                 <div className="
-                  grid grid-cols-1 gap-4 my-6 sm:grid-cols-5
+                  grid grid-cols-1 gap-4 my-6 sm:grid-cols-3 
+                  md:grid-cols-4
                 ">
                   {data && data.map((anime) => {
                     return (

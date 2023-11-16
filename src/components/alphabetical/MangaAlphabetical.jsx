@@ -84,7 +84,7 @@ const MangaAlphabetical = ({addList, already}) => {
                     className='m-auto max-w-[1750px] px-5'
                   >
                     <div className="
-                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-5
+                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-3 md:grid-cols-4
                     ">
                       {data.map((manga) => {
                         return (

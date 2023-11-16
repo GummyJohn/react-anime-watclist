@@ -46,13 +46,13 @@ const MangaList = ({readList, setReadList}) => {
         My Manga List: <span>{readList.length}</span>
       </h2>
 
-      <div className=''>
+      <div className='sm:mb-5'>
         <div 
           ref={mangalistCarousel}
           className='
             flex items-center overflow-auto bar 
-            sm:overflow-hidden sm:scroll-smooth
-          '
+            lg:overflow-hidden lg:scroll-smooth
+          ' 
         >
           {readList.map((manga) => {
             return (
@@ -72,9 +72,10 @@ const MangaList = ({readList, setReadList}) => {
         </div>
       
         <div 
-          className='
-            hidden sm:flex sm:justify-between sm:items-center sm:mt-2 sm:mb-5 sm:px-4 sm:inline
-          '
+           className='
+            hidden sm:hidden 
+            lg:flex lg:justify-between lg:items-center lg:mt-2 lg:mb-5 lg:px-4 lg:inline
+         '
         >
           <button 
             className='border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black '

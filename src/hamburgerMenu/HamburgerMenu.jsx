@@ -33,12 +33,8 @@ function HamburgerMenu({added}) {
   return (
     <div 
       className= 
-        'fixed z-10 w-full h-20 navbar sm:hidden'
+        'sm:inline md:hidden'
     >
-      {/* shows on phones */}
-      <div className='fixed z-10 top-3 w-full text-center'>
-        <h1 className='py-2 px-4 text-white text-3xl'>Anime Horizon</h1>
-      </div>
 
       {added && (
         <div className='relative top-16 left-0 text-white'>
@@ -84,7 +80,7 @@ function HamburgerMenu({added}) {
               animate={{x: 0}}
               transition={{stiffness: 10, duration: .2}}
               exit={{x: '-100vw'}}
-              className='h-screen w-44 fixed z-20 bg-black border-orange-500 border'
+              className='h-screen w-44 fixed z-20 bg-black border-orange-500 border overflow-auto'
             >
               <div className='mt-20 w-full '>
                 <div className='flex justify-center items-center'>
