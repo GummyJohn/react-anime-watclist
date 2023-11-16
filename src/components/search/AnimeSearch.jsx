@@ -77,7 +77,8 @@ const AnimeSearch = ({addList, already}) => {
           <>
             {data && (
               <div className="
-                grid grid-cols-1 gap-4 my-6 sm:grid-cols-5
+                grid grid-cols-1 gap-4 my-6 sm:grid-cols-3 md:grid-cols-4
+                
               ">
                 {data.map((anime) => {
                   return (

@@ -24,14 +24,15 @@ const Characters = ({id}) => {
           <h2 className="text-3xl text-orange-500 mb-2">Characters: </h2>
           <div className="flex justify-center items-center">
             <button 
-              className=' hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black sm:inline
+              className=' hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black sm:hidden
+              lg:inline
               '
               onClick={clickLeft}
             >
               <FontAwesomeIcon icon={faArrowLeft}/> 
             </button>
     
-            <div className="flex overflow-auto sm:overflow-hidden sm:scroll-smooth " ref={carouselContainer}>        
+            <div className="flex overflow-auto lg:overflow-hidden lg:scroll-smooth " ref={carouselContainer}>        
     
               {data.map((char) => {
                 return (
@@ -58,7 +59,8 @@ const Characters = ({id}) => {
             <button 
                 className='
                 hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
-                sm:inline
+                sm:hidden
+                lg:inline
               '
               onClick={clickRight}
             >

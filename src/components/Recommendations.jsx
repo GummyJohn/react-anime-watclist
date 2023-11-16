@@ -13,18 +13,13 @@ const Recommendations = ({ id, type}) => {
   const {data} = related;
 
   function clickRight(){
-    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft + 1160;
+    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft + 1024;
   }
   function clickLeft(){
-    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft - 1160;
+    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft - 1024;
   }
-
   return (
     <>
-      <h2 className="text-3xl text-orange-500 mb-2">
-        Recommendations :
-      </h2>
-
       {
         error 
           ? 
@@ -43,54 +38,62 @@ const Recommendations = ({ id, type}) => {
         (
           <>
             {data && (
-              <div className='flex justify-between items-center'>
-                {data.length > 5 && (
-                  <button 
-                    className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
-                    sm:inline 
-                  '
-                    onClick={clickLeft}
-                  >
-                    <FontAwesomeIcon icon={faArrowLeft}/> 
-                  </button>
-                )}
-
-                <div 
-                  ref={recommendRef}
-                  className='
-                    flex pt-2 px-3 bar overflow-auto
-                    sm:scroll-smooth sm:overflow-hidden
-                  ' 
-                >
-                  {data.map((recommend) => {
-                    return (
-                      <div className="mx-1" key={recommend.entry.mal_id}>
-                        <div className="h-6/6 w-56 p-2">
-                          <Link to={`/${type}/${recommend.entry.mal_id}`}>
-                            <motion.img 
-                              whileHover={{boxShadow: '0px 0px 20px orange'}}
-                              src={recommend.entry.images.jpg.large_image_url} 
-                              alt="recommended-anime"  className='rounded-2xl h-[360px]'
-                            />
-                          </Link>
-                          <p className='text-center'>{recommend.entry.title}</p>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-
-                {data.length > 5 && (
-                  <button 
-                    className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
-                    sm:inline
+              <> 
+                <h2 className="text-3xl text-orange-500 mb-2">
+                Recommendations : {data.length}
+                </h2>
+      
+                <div className='flex justify-between items-center'>
+                  {data.length > 5 && (
+                    <button 
+                      className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                      sm:hidden 
+                      lg:inline
                     '
-                    onClick={clickRight}
+                      onClick={clickLeft}
+                    >
+                      <FontAwesomeIcon icon={faArrowLeft}/> 
+                    </button>
+                  )}
+
+                  <div 
+                    ref={recommendRef}
+                    className='
+                      flex pt-2 px-3 bar overflow-auto 
+                      lg:scroll-smooth lg:overflow-hidden
+                    ' 
                   >
-                    <FontAwesomeIcon icon={faArrowRight} /> 
-                  </button>
-                )}
-              </div>
+                    {data.map((recommend) => {
+                      return (
+                        <div className="mx-1" key={recommend.entry.mal_id}>
+                          <div className="h-6/6 w-56 p-2">
+                            <Link to={`/${type}/${recommend.entry.mal_id}`}>
+                              <motion.img 
+                                whileHover={{boxShadow: '0px 0px 20px orange'}}
+                                src={recommend.entry.images.jpg.large_image_url} 
+                                alt="recommended-anime"  className='rounded-2xl h-[360px]'
+                              />
+                            </Link>
+                            <p className='text-center'>{recommend.entry.title}</p>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  {data.length > 5 && (
+                    <button 
+                      className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                      sm:hidden 
+                      lg:inline
+                      '
+                      onClick={clickRight}
+                    >
+                      <FontAwesomeIcon icon={faArrowRight} /> 
+                    </button>
+                  )}
+                </div>
+              </>
             )}
 
           </>
