@@ -1,12 +1,10 @@
-import { useReducer, useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom'
-import  {reducer, controls, actions}  from '../JS/reducer'
+import { Link} from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
 function HamburgerMenu({added, animelist, mangalist}) {
-  // const { pathname } = useLocation()
   const [showSections, setShowSections] = useState({
     showMenu: false,
     showBrowse: false,

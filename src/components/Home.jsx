@@ -69,7 +69,7 @@ const Home = () => {
           flex justify-center items-center relative 
           h-[90vh]
           sm:h-screen
-          md:h-[92vh]
+          md:h-[95vh]
           lg:h-[75vh]
           xl:h-[70vh]
           2xl:h-[55vh]
@@ -96,7 +96,7 @@ const Home = () => {
             className='h-full text-white 
             w-6/12 border-2 rounded-2xl relative  mx-auto text-center flex flex-col justify-between w-full h-full 
             sm:w-[65%]  sm:mt-[-20px]
-            md:mt-5 md:w-[75%]
+            md:mt-5 md:w-[75%] 
             lg:w-[50%] 
             xl:w-[50%] xl:h-[480px]
             '
@@ -166,7 +166,7 @@ const Home = () => {
       <div 
         className=" flex flex-col text-white my-6 m-auto p-2 px-4
           sm:max-w-[1750px]  sm:grid sm:grid-cols-2  sm:p-5 sm:gap-3 sm:mt-20
-          md:mt-0
+          md:mt-0 
           lg:flex lg:flex-row 
         "
       >

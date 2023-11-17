@@ -1,25 +1,38 @@
 import { Link, useLocation } from 'react-router-dom'
 import NarutoIcon from './NarutoIcon'
 import HamburgerMenu from '../hamburgerMenu/HamburgerMenu'
-import { useReducer, useRef } from 'react'
+import { useReducer, useEffect, useState } from 'react'
 import  {reducer, controls, actions}  from '../JS/reducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire, faFont, faMagnifyingGlass, faTv, faBook ,faChevronRight} from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 
 const NavBar = ({animelist, mangalist, added}) => {
-  const menuRef= useRef();
   const { pathname } = useLocation();
+  const [scrolling, setScrolling] = useState(false)
   const [state, dispatch] = useReducer(reducer, controls)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolling = (window.scrollY > 0);
+      setScrolling(isScrolling)
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
       <HamburgerMenu added={added} animelist={animelist} mangalist={mangalist}/>
       <div 
         className={ 
-          pathname === '/' ? 
-          'hidden w-full fixed z-40 sm:hidden md:inline' : 
-          'navbar w-full fixed z-40 hidden sm:hidden md:inline'}
+          pathname === '/' && !scrolling? 
+          'hidden w-full fixed z-40 sm:hidden md:inline ' : 
+          'w-full fixed z-40 hidden sm:hidden md:inline navbar '}
       >
         <motion.div 
           initial={{y: '-100vw'}}
