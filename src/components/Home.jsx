@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion} from 'framer-motion'
+import { useState} from 'react'
+import { motion } from 'framer-motion'
 import AnimeHorizon from './sildes/AnimeHorizon'
 import CharacterExplore from './sildes/CharacterExplore'
 import RecommendationTxt from './sildes/RecommendationTxt'
@@ -69,11 +69,12 @@ const Home = () => {
           flex justify-center items-center relative 
           h-[90vh]
           sm:h-screen
-          md:h-[82vh]
-          lg:h-[55vh]
+          md:h-[92vh]
+          lg:h-[75vh]
+          xl:h-[65vh]
+          2xl:h-[55vh]
         '
       > 
-
         <div className='max-w-[1750px] mt-12 flex items-center px-5'>
           <button
             className='
@@ -93,10 +94,11 @@ const Home = () => {
             animate={{x: 0}} 
             transition={{delay: .5}}  
             className='h-full text-white 
-            w-6/12 border-2 rounded-2xl relative  mx-auto text-center flex flex-col justify-between w-full h-[40%]
-            sm:w-[65%] sm:h-[300px] sm:mt-[-20px]
-            md:mt-5 md:h-[250px]
-            lg:h-[580px] lg:w-[50%]
+            w-6/12 border-2 rounded-2xl relative  mx-auto text-center flex flex-col justify-between w-full h-full 
+            sm:w-[65%]  sm:mt-[-20px]
+            md:mt-5 md:w-[75%]
+            lg:w-[50%] 
+            xl:w-[50%] xl:h-[480px]
             '
           >
             <div className='absolute bg-black opacity-60 w-full h-full z-0 rounded-2xl '></div>
@@ -124,8 +126,6 @@ const Home = () => {
             '>
               <div className='
                 flex items-center justify-center relatvie z-20
-                md:hidden
-                lg:inline
               '>
                 {images.map((btn, index) => {
                   return (

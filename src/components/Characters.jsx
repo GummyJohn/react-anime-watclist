@@ -32,7 +32,7 @@ const Characters = ({id}) => {
               <FontAwesomeIcon icon={faArrowLeft}/> 
             </button>
     
-            <div className="flex overflow-auto lg:overflow-hidden lg:scroll-smooth " ref={carouselContainer}>        
+            <div className="flex overflow-auto scroll-smooth bar xl:overflow-hidden" ref={carouselContainer}>        
     
               {data.map((char) => {
                 return (

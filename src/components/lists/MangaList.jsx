@@ -11,11 +11,11 @@ const MangaList = ({readList, setReadList}) => {
   const [activeManga, setActiveManga] = useState({})
 
   function clickRight(){
-    mangalistCarousel.current.scrollLeft =  mangalistCarousel.current.scrollLeft + 1252;
+    mangalistCarousel.current.scrollLeft =  mangalistCarousel.current.scrollLeft + 1000;
   }
 
   function clickLeft(){
-    mangalistCarousel.current.scrollLeft =  mangalistCarousel.current.scrollLeft - 1252;
+    mangalistCarousel.current.scrollLeft =  mangalistCarousel.current.scrollLeft - 1000;
   }
 
   function remove(manga){
@@ -41,7 +41,7 @@ const MangaList = ({readList, setReadList}) => {
 
 
   return (
-    <div className='text-orange-500 max m-auto p-4'>
+    <div className='text-orange-500 m-auto max-w-[1750px] p-4'>
       <h2 className='text-5xl mb-5 mt-36 '>
         My Manga List: <span>{readList.length}</span>
       </h2>

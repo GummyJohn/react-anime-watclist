@@ -5,7 +5,7 @@ import  {reducer, controls, actions}  from '../JS/reducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown} from '@fortawesome/free-solid-svg-icons'
 
-function HamburgerMenu({added}) {
+function HamburgerMenu({added, animelist, mangalist}) {
   // const { pathname } = useLocation()
   const [showSections, setShowSections] = useState({
     showMenu: false,
@@ -20,6 +20,18 @@ function HamburgerMenu({added}) {
     setShowSections({
       ...showSections,
       [section]: !showSections[section],
+    });
+  }
+
+  function closeAll(){
+    setShowSections(() => {
+      const updatedSections = {};
+      
+      Object.keys(showSections).forEach((section) => {
+        updatedSections[section] = false;
+      });
+
+      return updatedSections;
     });
   }
 
@@ -95,7 +107,7 @@ function HamburgerMenu({added}) {
 
                 <div className='text-white px-4 mt-4'>
                   <Link to='/' 
-                    onClick={() => toggleSection('showMenu')}
+                    onClick={() => closeAll()}
                   >
                     Home
                   </Link>
@@ -132,13 +144,13 @@ function HamburgerMenu({added}) {
                           {showSections.showPopular && (
                             <div className='flex flex-col mx-4 '>
                               <Link to='/anime/popular'
-                                onClick={() => toggleSection('showMenu')}
+                                onClick={() => closeAll()}
                                 className='my-1'
                               >
                                 Anime
                               </Link>
                               <Link to='/manga/popular'
-                                onClick={() => toggleSection('showMenu')}
+                                onClick={() => closeAll()}
                                 className='my-1'
                               >
                                 Manga
@@ -161,13 +173,13 @@ function HamburgerMenu({added}) {
                           {showSections.showA && (
                             <div className='flex flex-col mx-4 '>
                               <Link to='/anime/alphabetical'
-                                onClick={() => toggleSection('showMenu')}
+                                onClick={() => closeAll()}
                                 className='my-1'
                               >
                                 Anime
                               </Link>
                               <Link to='/manga/alphabetical'
-                                onClick={() => toggleSection('showMenu')}
+                                onClick={() => closeAll()}
                                 className='my-1'
                               >
                                 Manga
@@ -190,13 +202,13 @@ function HamburgerMenu({added}) {
                           {showSections.showSearch && (
                             <div className='flex flex-col mx-4 '>
                               <Link to='/anime/search'
-                                onClick={() => toggleSection('showMenu')}
+                                onClick={() => closeAll()}
                                 className='my-1'
                               >
                                 Anime
                               </Link>
                               <Link to='/manga/search'
-                                onClick={() => toggleSection('showMenu')}
+                                onClick={() => closeAll()}
                                 className='my-1'
                               >
                                 Manga
@@ -220,18 +232,18 @@ function HamburgerMenu({added}) {
                       />
                     </button>
                     {showSections.showList && (
-                      <div className='flex flex-col mx-4 absolute'>
+                      <div className='flex flex-col mx-4 absolute text-white'>
                         <Link to='/animelist'
-                          onClick={() => toggleSection('showMenu')}
+                          onClick={() => closeAll()}
                           className='my-1'
                         >
-                          Anime List
+                          Anime List: <span>{animelist}</span>
                         </Link>
                         <Link to='/mangalist'
-                          onClick={() => toggleSection('showMenu')}
+                          onClick={() => closeAll()}
                           className='my-1'
                         >
-                          Manga List
+                          Manga List: <span>{mangalist}</span>
                         </Link>
                       </div>
                     )}

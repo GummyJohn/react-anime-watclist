@@ -21,7 +21,7 @@ const MangaAlphabetical = ({addList, already}) => {
   }, [mangaAlph])
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black h-screen max-w-[1750px] m-auto">
       <div className="text-white bg-black">
 
         <div className="mx-auto p-3 w-full ">
@@ -84,7 +84,8 @@ const MangaAlphabetical = ({addList, already}) => {
                     className='m-auto max-w-[1750px] px-5'
                   >
                     <div className="
-                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-3 md:grid-cols-4
+                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-3 lg:grid-cols-4
+                      xl:grid-cols-5
                     ">
                       {data.map((manga) => {
                         return (

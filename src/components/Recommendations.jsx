@@ -13,10 +13,10 @@ const Recommendations = ({ id, type}) => {
   const {data} = related;
 
   function clickRight(){
-    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft + 1024;
+    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft + 1000;
   }
   function clickLeft(){
-    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft - 1024;
+    recommendRef.current.scrollLeft =  recommendRef.current.scrollLeft - 1000;
   }
   return (
     <>
@@ -43,29 +43,17 @@ const Recommendations = ({ id, type}) => {
                 Recommendations : {data.length}
                 </h2>
       
-                <div className='flex justify-between items-center'>
-                  {data.length > 5 && (
-                    <button 
-                      className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
-                      sm:hidden 
-                      lg:inline
-                    '
-                      onClick={clickLeft}
-                    >
-                      <FontAwesomeIcon icon={faArrowLeft}/> 
-                    </button>
-                  )}
-
+                <div>               
                   <div 
                     ref={recommendRef}
                     className='
-                      flex pt-2 px-3 bar overflow-auto 
-                      lg:scroll-smooth lg:overflow-hidden
+                      flex pt-2 px-3 bar overflow-auto  
+                      scroll-smooth xl:overflow-hidden
                     ' 
                   >
                     {data.map((recommend) => {
                       return (
-                        <div className="mx-1" key={recommend.entry.mal_id}>
+                        <div className="mr-[1.6rem]" key={recommend.entry.mal_id}>
                           <div className="h-6/6 w-56 p-2">
                             <Link to={`/${type}/${recommend.entry.mal_id}`}>
                               <motion.img 
@@ -82,15 +70,25 @@ const Recommendations = ({ id, type}) => {
                   </div>
 
                   {data.length > 5 && (
-                    <button 
-                      className='hidden border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
-                      sm:hidden 
-                      lg:inline
-                      '
-                      onClick={clickRight}
-                    >
-                      <FontAwesomeIcon icon={faArrowRight} /> 
-                    </button>
+                    <div className='hidden lg:inline '>
+                      <div className='flex w-full  justify-between mt-[-1.5rem] items-center px-6'>
+                        <button 
+                          className=' border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                        '
+                          onClick={clickLeft}
+                        >
+                          <FontAwesomeIcon icon={faArrowLeft}/> 
+                        </button>
+
+                        <button 
+                          className=' border-2 rounded-xl py-1 px-3 bg-orange-500 text-white border-orange-500 hover:bg-black 
+                          '
+                          onClick={clickRight}
+                        >
+                          <FontAwesomeIcon icon={faArrowRight} /> 
+                        </button>
+                      </div>
+                    </div>
                   )}
                 </div>
               </>

@@ -1,21 +1,22 @@
 import { Link, useLocation } from 'react-router-dom'
 import NarutoIcon from './NarutoIcon'
 import HamburgerMenu from '../hamburgerMenu/HamburgerMenu'
-import { useReducer } from 'react'
+import { useReducer, useRef } from 'react'
 import  {reducer, controls, actions}  from '../JS/reducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFire, faFont, faMagnifyingGlass, faTv, faBook ,faChevronRight} from '@fortawesome/free-solid-svg-icons'
 import { motion } from 'framer-motion'
 
 const NavBar = ({animelist, mangalist, added}) => {
+  const menuRef= useRef();
   const { pathname } = useLocation();
   const [state, dispatch] = useReducer(reducer, controls)
 
   return (
     <>
-      <HamburgerMenu added={added}/>
+      <HamburgerMenu added={added} animelist={animelist} mangalist={mangalist}/>
       <div 
-      className={ 
+        className={ 
           pathname === '/' ? 
           'hidden w-full fixed z-40 sm:hidden md:inline' : 
           'navbar w-full fixed z-40 hidden sm:hidden md:inline'}
@@ -41,7 +42,7 @@ const NavBar = ({animelist, mangalist, added}) => {
             <div>
 
               <div 
-                className={state.show ? 'mx-4 text-orange-500 cursor-pointer' : 'mx-4 cursor-pointer cursor-pointer'}
+                className={state.show ? 'mx-4 text-orange-500cursor-pointer' : 'mx-4 cursor-pointer cursor-pointer'}
                 onMouseEnter={() => dispatch({type: actions.showMenu})}
               >
                 Browse
