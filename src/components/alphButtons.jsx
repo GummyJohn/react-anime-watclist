@@ -12,11 +12,12 @@ const AlphButtons = ({onClick, letter}) => {
   }
 
   return ( 
-    <div>
+    <div className=''>
       <div className='
-        h-13  flex align-center justify-start overflow-auto pl-2 w-[80%] m-auto bar mt-[-10px]
+        h-12 flex align-center justify-start overflow-auto pl-2 w-full m-auto bar mt-[-10px] 
         sm:justify-start sm:w-5/6 sm:overflow-auto
         md:justify-start md:w-5/6 md:overflow-auto
+        xl:w-full xl:justify-center
       '>
         {alphabet.map((alph) => {
           return (

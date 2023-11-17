@@ -118,7 +118,10 @@ const Anime = ({already, addList}) => {
                     <h2 className="text-3xl text-orange-500">Trailer: </h2>
                     <div 
                       className="flex justify-center items-center my-5 h-[200px] w-full m-auto 
-                      sm:h-[450px] sm:w-[800px]
+                      sm:h-[250px] sm:w-[400px]
+                      md:h-[350px] md:w-[550px]
+                      lg:h-[450px] lg:w-[650px]
+                      xl:h-[550px] xl:w-[850px]
                       "
                     >
                       <ReactPlayer 

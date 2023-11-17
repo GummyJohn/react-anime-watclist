@@ -68,7 +68,7 @@ const MagnaPopular = ({already, addList}) => {
           {data && ( 
             <div className="px-4 my-2">
               <div className="
-                grid grid-cols-1 gap-4 my-6 sm:grid-cols-3 md:grid-cols-4
+                grid grid-cols-1 gap-4 my-6 sm:grid-cols-3  xl:grid-cols-5
               ">
                 {data && data.map((manga) => {
                   return (

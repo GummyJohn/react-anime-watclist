@@ -21,7 +21,7 @@ const AnimeAlphabetical = ({addList, already}) => {
   }, [alph])
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black h-screen max-w-[1750px] m-auto">
       <div className="text-white">
         <div className="mx-auto p-3 w-full">
           <div className="mt-2 mb-6 mt-36">
@@ -82,7 +82,8 @@ const AnimeAlphabetical = ({addList, already}) => {
                   className='m-auto max-w-[1750px] px-5'
                   >
                     <div className="
-                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-3 md:grid-cols-4
+                      grid grid-cols-1 gap-4 my-5 sm:grid-cols-3 lg:grid-cols-4
+                      xl:grid-cols-5
                     ">
                       {data && data.map((anime) => {
                         return (
