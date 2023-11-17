@@ -12,7 +12,6 @@ const AnimeAlphabetical = ({addList, already}) => {
   const [page, setPage] = useState(1)
 
   const {data: animes, loading, error, errorMsg} = fetchData(`https://api.jikan.moe/v4/anime?letter=${alph}&page=${page}`)
-
   const { data } = animes
 
   useEffect(() => {
