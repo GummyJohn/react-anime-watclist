@@ -71,8 +71,7 @@ const Home = () => {
           sm:h-screen
           md:h-[92vh]
           lg:h-[75vh]
-          xl:h-[65vh]
-          2xl:h-[55vh]
+          xl:h-[70vh]
         '
       > 
         <div className='max-w-[1750px] mt-12 flex items-center px-5'>
